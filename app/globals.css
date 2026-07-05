@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --ink: #121417;
+  --muted: #6D737A;
+  --cream: #F7F2EA;
+  --sage: #2D5D4B;
+  --sage-dark: #1F4437;
+  --terracotta: #B96F54;
+  --line: rgba(18, 20, 23, 0.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(45, 93, 75, 0.10), transparent 34rem),
+    linear-gradient(180deg, #FBF7F0 0%, #F7F2EA 55%, #F4EEE4 100%);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; }
+
+.text-muted { color: var(--muted); }
+.text-sage { color: var(--sage); }
+.text-ink { color: var(--ink); }
+.bg-sage { background: var(--sage); }
+.bg-ink { background: var(--ink); }
+.bg-cream { background: var(--cream); }
+.bg-terracotta { background: var(--terracotta); }
+.border-sage { border-color: var(--sage); }
+.border-soft { border-color: var(--line); }
+.shadow-soft { box-shadow: 0 20px 60px rgba(18, 20, 23, 0.08); }
+.shadow-card { box-shadow: 0 12px 40px rgba(18, 20, 23, 0.07); }
+
+.card {
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.86);
+  box-shadow: 0 12px 40px rgba(18, 20, 23, 0.06);
+  backdrop-filter: blur(16px);
+}
+
+.input {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(18, 20, 23, 0.10);
+  background: white;
+  padding: 12px 14px;
+  outline: none;
+  transition: box-shadow .15s ease, border-color .15s ease, transform .15s ease;
+}
+.input:focus {
+  border-color: rgba(45, 93, 75, 0.45);
+  box-shadow: 0 0 0 4px rgba(45, 93, 75, 0.12);
+}
+.input::placeholder { color: rgba(109,115,122,.7); }
+
+.btn-primary {
+  border-radius: 18px;
+  background: var(--sage);
+  color: white;
+  font-weight: 800;
+  padding: 13px 18px;
+  transition: transform .16s ease, background .16s ease, box-shadow .16s ease;
+  box-shadow: 0 12px 28px rgba(45, 93, 75, .22);
+}
+.btn-primary:hover { background: var(--sage-dark); transform: translateY(-1px); }
+.btn-secondary {
+  border-radius: 18px;
+  background: white;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-weight: 800;
+  padding: 13px 18px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(45, 93, 75, 0.15);
+  background: rgba(45, 93, 75, 0.08);
+  color: var(--sage);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 10px;
+}
+
+.contract-viewport {
+  overflow-x: auto;
+  padding-bottom: 32px;
+}
+.contract-paper {
+  width: 210mm;
+  min-height: 297mm;
+  background: white;
+  margin: 0 auto;
+  padding: 18mm 17mm;
+  box-shadow: 0 24px 80px rgba(18, 20, 23, 0.16);
+  border-radius: 2px;
+  font-family: Arial, sans-serif;
+  font-size: 11.3pt;
+  line-height: 1.45;
+  color: #111;
+}
+.contract-paper .doc-header {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 9.5pt;
+  color: #444;
+}
+.contract-paper h1 { font-size: 14pt; text-align: center; font-weight: 700; margin: 20px 0; letter-spacing: .2px; }
+.contract-paper h2 { font-size: 11.5pt; font-weight: 700; margin: 18px 0 8px; }
+.contract-paper p { margin: 6px 0; text-align: justify; }
+.signature-block { break-inside: avoid; page-break-inside: avoid; margin-top: 36px; }
+.signature-row { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 56px; break-inside: avoid; page-break-inside: avoid; }
+.signature-line { border-top: 1px solid #111; padding-top: 8px; text-align: center; font-size: 10.5pt; }
+.page-break { break-after: page; page-break-after: always; }
+
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+  .contract-viewport { overflow: visible; padding: 0; }
+  .contract-paper { box-shadow: none; width: auto; min-height: auto; margin: 0; padding: 0; border-radius: 0; }
+  @page { size: A4; margin: 18mm 17mm; }
+}
